@@ -2,27 +2,35 @@
 title: "p8105_hw1_gc2942"
 output: github_document
 ---
+# Problem 1
+The chunk below creates a dataframe containing a random sample of size 10 from a standard Normal distribution, construct a logical vector, takes a character vector of length 10, and a factor vector of length 10, with 3 different factor “levels”("Good","Very Good","Excellent").
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup,include = FALSE}
+library(tidyverse)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+hw_df = tibble(
+  sample = rnorm(10),
+  gr_than_0 = sample > 0,
+  vec_char = c("I","will","go","to","Mailman","School","of","Public","School", "tommorrow"),
+  vec_factor = factor(c("Good","Very Good","Excellent","Good","Very Good","Excellent","Good","Very Good","Excellent","Good"))
+)
+ mean(pull(hw_df, sample))
+ mean(pull(hw_df, gr_than_0)) 
 ```
 
-## Including Plots
+I can take the mean of sample from standard normal distribution and a logical vector, but I fail to run the mean for a character vector and a factor vector.Therefore, I write the following code and try to convert those variables from one type to numeric.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r, eval=FALSE}
+  as.numeric((pull(hw_df, gr_than_0)) 
+  as.numeric(pull(hw_df,vec_char))
+  as.numeric(pull(hw_df,vec_factor))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The result shows that it is impossible to convert a character vector into a  numerical number. However, we can assign the number to an ordinal variable.
+
+
+
+
+
