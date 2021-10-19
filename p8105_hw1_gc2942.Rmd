@@ -30,6 +30,27 @@ I can take the mean of sample from standard normal distribution and a logical ve
 
 The result shows that it is impossible to convert a character vector into a  numerical number. However, we can assign the number to an ordinal variable.
 
+## Problem 2
+
+
+```{r}
+data("penguins", package = "palmerpenguins")
+
+```
+We first download the penguins data set. 
+There are `r nrow(penguins)` and `r ncol(penguins)` within the data set. 
+Variables are included `r names(penguins)`.
+The mean flipper length is `r mean(pull(penguins,flipper_length_mm),na.rm = TRUE)`.
+
+Then we make the scatterplot for penguins.
+```{r,warning=FALSE}
+ggplot(penguins,aes(x = bill_length_mm, 
+        y = flipper_length_mm,
+        color =  species)) + geom_point() 
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+```
+
+
 
 
 
